@@ -1,27 +1,26 @@
-<div class="container">
-  <div class="row">
-    <jumbotron text-center>
-        <h1>Eat Delicious Burgers...</h1>
-    </jumbotron>
-    <div class="col-xs-6 text-center" class"task">
-      <div class="row">
+<div class="container text-centered">
+<div class="card bg-dark text-white text-center">
+<h2 class="card-title">EAT DELICIOUS HAMBURGERS</h2>
+<p class="card-text">Make your favorite hamburgers and devour them one by one!</p>
+<br>
+    </div>
+      <br>
+      <br>
+      <ul class="list-group text-center">
         {{#each burger_data}}
           {{#unless this.devoured}}
-        <div class="col-xs-9 text-center">
+        <li class="list-group-item text-center">
           <pre>{{this.id}}. {{this.burger_name}}</pre>
-        </div>
-        <div class="col-xs-3 text-center">
-          <form method="POST" action="/burgers/update?_method=PUT" class="button-size">
+          <form class="button-size">
           <input type ="hidden" name="burger_id" type="text" value={{this.id}}>
-          <br>
-          <button type="submit" class"btn btn-default">
+          <button type="submit" class="btn btn-default" id="devourbtn" value={{this.id}}>
          DEVOUR IT!</button>   
          </form>
-        </div>
+        </li>
         {{/unless}}
         {{/each}}
       </div>
-    </div>
+  
     <div class="col-xs-6 text-center" class"task">
       {{#each burger_data}}
         {{#if this.devoured}}
@@ -29,21 +28,14 @@
         <input class="form-control" type="text" placeholder="{{this.id}}. {{this.burger_name}}" readonly>
         {{/if}}
         {{/each}}
-    </div> 
-  </div>
 </div>
 <br>
 <br>
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 text-center enter_section">
+    <div class="form-group mx-sm-2 text-center">
+   <label for="Burger Input">Enter a Burger you would like to devour!</label>
     <form action="/burgers/create" method="POST">
-        <input type="text" name="burger_name" class="form-control"
-        value"" id="enter_text">
-        <button type="submit" class="btn btn-danger" id="text-enter-button">SUBMIT</button>
-    </form>
-    <p>Enter a burger you would like to devour!</p>
+        <input type="text" name="burger_name" class="form-control" id="enter_text">
+        <button type="submit" class="btn btn-danger text-center" id="text-center-button">SUBMIT</button>
     </div>
   </div>
-</div>
-
+</form>

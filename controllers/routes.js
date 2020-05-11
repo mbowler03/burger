@@ -9,10 +9,12 @@ router.get('/', function(req, res){
   })
 })
 
-router.put('/burgers/update',function(req,res){
-  burger.update(req.body.burger_id, function(result){
+router.put('/burgers/update/:id',function(req,res){
+  burger.update(req.params.id, function(result){
     console.log(result);
+    console.log("hit the put route updating");
     res.redirect('/');
+  
   });
 });
 
